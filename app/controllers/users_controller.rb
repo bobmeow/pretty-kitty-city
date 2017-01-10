@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+
   def show
+    authorize_user
     @user = User.find(params[:id])
   end
 
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to new_pet_path
      else
-      render :new 
+      render :new
     end
   end
 

@@ -18,9 +18,12 @@ class PetsController < ApplicationController
   end
 
   def show
-    set_pet
-    @user = User.find(current_user)
-    @people_friends = @pet.people_friends
+    if authorize_user
+    else
+      set_pet
+      @user = User.find(current_user)
+      @people_friends = @pet.people_friends
+    end
   end
 
   def update
