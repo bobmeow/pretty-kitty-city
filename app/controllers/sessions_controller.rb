@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if !User.find_by(name: params[:user][:name]).try(:authenticate, params[:user][:password])
+    if !User.find_by(username: params[:user][:username]).try(:authenticate, params[:user][:password])
       flash.now.alert = "invalid login credentials"
       redirect_to "/login"
     else
-      @user = User.find_by(name: params[:user][:name])
+      @user = User.find_by(username: params[:user][:username])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     end
@@ -17,5 +17,11 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to '/login'
+  end
+
+  private
+
+  def session_params
+    params.require(:user).permit(:username)
   end
 end
