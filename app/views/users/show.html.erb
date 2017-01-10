@@ -1,0 +1,10 @@
+<h1>this is the user</h1>
+<%= @user.name %>
+<%= @user.username %>
+<%= link_to "My pet: #{@user.pet.name}", pet_path(@user.pet) %>
+<h3>other pets</h3>
+<ul>
+<% @user.pet_friends.each do |pet_friend| %>
+<li><%= link_to "#{pet_friend.name}", pet_path(pet_friend) %></li>
+<% end %>
+</ul>
