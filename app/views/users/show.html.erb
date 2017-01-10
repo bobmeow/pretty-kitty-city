@@ -11,3 +11,7 @@
 <li><%= link_to "#{pet_friend.name}", pet_path(pet_friend) %></li>
 <% end %>
 </ul>
+
+<% if current_user %>
+  <%= link_to "Logout", logout_path, :method => 'post' %>
+<%end%>

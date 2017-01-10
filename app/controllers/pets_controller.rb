@@ -39,15 +39,3 @@ class PetsController < ApplicationController
     params.require(:pet).permit(:name)
   end
 end
-
-
-
-def can_friend_pet?
-  if true
-end
-
-
-
-can_friend_pet?
-  puts "WHatever"
-end
