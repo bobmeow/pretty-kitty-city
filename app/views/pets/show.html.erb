@@ -7,6 +7,7 @@ All My Friends:
   <% end %>
 </ul>
 
-<% unless (@people_friends.pluck(:id).include? @user.id) || (@pet.owner_id == @user.id) %>
+
+<% unless check_friend_or_owner_of_pet(@people_friends, @pet) %>
   <%= button_to 'Be My FRIEND!!!', @pet, method: :patch %>
 <% end %>

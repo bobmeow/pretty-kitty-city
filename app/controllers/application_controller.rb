@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :current_user, :check_friend_or_owner_of_pet
 
   private
+
+  def check_friend_or_owner_of_pet(people_friends, pet)
+    (people_friends.pluck(:id).include? current_user) || (pet.owner_id == current_user)
+  end
 
   def current_user
     session[:user_id]
