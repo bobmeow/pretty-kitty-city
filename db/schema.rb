@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20170109203106) do
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
-    t.integer  "mood_level"
+    t.integer  "mood_level", default: 5
     t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
