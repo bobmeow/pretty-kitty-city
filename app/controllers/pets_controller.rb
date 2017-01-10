@@ -22,6 +22,12 @@ class PetsController < ApplicationController
     @people_friends = @pet.people_friends
   end
 
+  def update
+    set_pet
+    @pet.people_friends << User.find(current_user)
+    redirect_to @pet
+  end
+
   private
 
   def set_pet

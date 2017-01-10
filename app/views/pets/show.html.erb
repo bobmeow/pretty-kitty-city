@@ -6,5 +6,6 @@ All My Friends:
     <li><%= link_to pf.name, pf %></li>
   <% end %>
 </ul>
-
-Be My FRIEND!!!
+<% if !@pet.is_friend_or_owner %>
+  <%= button_to 'Be My FRIEND!!!', @pet, method: :patch %>
+<% end %>

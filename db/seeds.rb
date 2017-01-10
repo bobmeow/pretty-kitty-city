@@ -1,10 +1,26 @@
-User.create(username: "bob", name: "bob", password: '123')
-Pet.create(name: "a cat", owner_id: User.all.last.id)
-User.create(username: "dude", name: "dude", password: '123')
-Pet.create(name: "cattt", owner_id: User.all.last.id)
-User.create(username: "person", name: "person", password: '123')
-Pet.create(name: "mor catt", owner_id: User.all.last.id)
+###User seeds
+User.create(username: "jmpann", name: "Josh", password: 'abc123')
+User.create(username: "rachlovescats", name: "Rachel", password: '12345')
+User.create(username: "kk_antoin", name: "Antoin", password: 'abcde')
+User.create(username: "jj", name: "Jing", password: 'qwerty')
+User.create(username: "bobmeow", name: "Bob", password: 'asdfg')
+User.create(username: 'icandy', name: "Ian", password: 'iancandy')
+User.create(username: 'fitnessguru', name: "Yomi", password: 'iloveworkingout')
 
-Pet.all.last.people_friends << User.find(2)
-Pet.all.second.people_friends << User.find(1)
-Pet.all.first.people_friends << User.find(2)
+###Pet seeds
+rufus = Pet.create(name: "Rufus", mood_level: 5, owner_id: 1)
+benecc = Pet.create(name: "Benedict CumberCat", mood_level: 5, owner_id: 2)
+tiger = Pet.create(name: "Tiger", mood_level: 5, owner_id: 3)
+kitty_purry = Pet.create(name: "Kitty Purry", mood_level: 5, owner_id: 4)
+coffee_cat = Pet.create(name: "Coffe Cat", mood_level: 5, owner_id: 5)
+scary_spice = Pet.create(name: "Scary Spice Baby Kat", mood_level: 5, owner_id: 6)
+cheddar_cat = Pet.create(name: "Chedder Cat", mood_level: 5, owner_id: 7)
+
+###Seeding Friends of Cats
+rufus.people_friends << [User.find(2), User.find(3), User.find(4)]
+benecc.people_friends << [User.find(3), User.find(6)]
+tiger.people_friends << [User.find(1), User.find(4)]
+kitty_purry.people_friends << [User.find(2), User.find(7)]
+coffee_cat.people_friends << [User.find(2), User.find(3), User.find(4), User.find(6), User.find(7)]
+scary_spice.people_friends << [User.find(2), User.find(1)]
+cheddar_cat.people_friends << [User.find(5), User.find(3), User.find(6)]
