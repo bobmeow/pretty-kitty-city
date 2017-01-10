@@ -1,0 +1,7 @@
+<h1>KITTY CITY</h1>
+
+<ol>
+  <% @pets.each do |p| %>
+   <li><%= link_to p.name, p %></li>
+  <% end %>
+</ol>
