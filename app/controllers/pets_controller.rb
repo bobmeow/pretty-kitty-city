@@ -19,6 +19,7 @@ class PetsController < ApplicationController
 
   def show
     set_pet
+    @user = User.find(current_user)
     @people_friends = @pet.people_friends
   end
 
