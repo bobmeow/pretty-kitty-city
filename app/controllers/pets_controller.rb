@@ -19,7 +19,14 @@ class PetsController < ApplicationController
 
   def show
     set_pet
+    @user = User.find(current_user)
     @people_friends = @pet.people_friends
+  end
+
+  def update
+    set_pet
+    @pet.people_friends << User.find(current_user)
+    redirect_to @pet
   end
 
   private
