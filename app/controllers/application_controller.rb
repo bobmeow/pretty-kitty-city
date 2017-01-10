@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :check_friend_or_owner_of_pet
+  helper_method :current_user, :check_friend_or_owner_of_pet, :check_owner_of_pet, :check_friend_of_pet
 
   private
 
