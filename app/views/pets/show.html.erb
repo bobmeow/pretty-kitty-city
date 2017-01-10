@@ -1,0 +1,10 @@
+<h1><%= @pet.name %></h1>
+
+All My Friends:
+<ul>
+  <% @people_friends.each do |pf| %>
+    <li><%= link_to pf.name, pf %></li>
+  <% end %>
+</ul>
+
+Be My FRIEND!!!
