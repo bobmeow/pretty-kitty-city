@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
-  post "/interactions/:id", to: "interactions#create"
-  #patch '/pets/:id', to: 'pets#pet_me', as: 'pet_me'
+
+
+  post '/owner_interactions/:id', to: 'owner_interactions#create'
+
 end
