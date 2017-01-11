@@ -1,0 +1,2 @@
+class OwnerInteraction < ApplicationRecord
+end
