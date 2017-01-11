@@ -1,5 +1,5 @@
 .welcome {
-    background-image: asset-url("background.jpg"), image;
+    background-image: image-url("background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
