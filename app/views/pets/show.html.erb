@@ -14,27 +14,30 @@ All My Friends:
 <% end %>
 
 <!-- OWNER INTERACTIONS -->
+<% if check_owner_of_pet(@pet) %>
+  Hi Owner.
+    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+     <%= hidden_field_tag(:kind, :scratch) %>
+      <%= submit_tag 'Pet me' %>
+      <%end%>
 
-<%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
- <%= hidden_field_tag(:kind, :scratch) %>
-  <%= submit_tag 'Pet me' %>
-  <%end%>
 
+    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+    <%= hidden_field_tag(:kind, :feed) %>
+      <%= submit_tag 'Feed Me' %>
+      <%end%>
 
-<%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
-<%= hidden_field_tag(:kind, :feed) %>
-  <%= submit_tag 'Feed Me' %>
-  <%end%>
+      <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+    <%= hidden_field_tag(:kind, :lick) %>
+      <%= submit_tag 'Lick Me' %>
+      <%end%>
 
-  <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
-<%= hidden_field_tag(:kind, :lick) %>
-  <%= submit_tag 'Lick Me' %>
-  <%end%>
-
-<% if flash[:notice] %>
-  <p><%=flash[:notice]%></p>
+    <% if flash[:notice] %>
+      <p><%=flash[:notice]%></p>
+    <% end %>
 <% end %>
  <!-- OWNER INTERACTIONS -->
+
 <% if check_friend_of_pet(@people_friends) %>
 Hi, <%= @user.name %>, we are best friends!
   <%= form_tag("/friendly_interactions/#{@pet.id}", method: 'post') do %>
@@ -42,6 +45,9 @@ Hi, <%= @user.name %>, we are best friends!
   <%end%>
 <% end %>
 <br>
-<% @user.caramel_points.times do %>
-<div class='candy'>🍭</div>
+<% if @user.caramel_points > 0 %>
+  <%= @user.name %>'s caramel points: <br>
+  <% @user.caramel_points.times do %>
+    <div class='candy'>🍭</div>
+  <% end %>
 <% end %>
