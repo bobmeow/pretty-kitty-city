@@ -8,16 +8,35 @@ All My Friends:
   <% end %>
 </ul>
 
+
 <%= @pet.mood_level %>
 <%= @user.caramel_points %>
-
 
 <% unless is_friend_or_owner_of_pet?(@people_friends, @pet) %>
   <%= button_to 'Be My FRIEND!!!', @pet, method: :patch %>
 <% end %>
 
-<%= form_tag("/interactions/#{@pet.id}", method: 'post') do %>
+
+
+<!-- OWNER INTERACTIONS -->
+
+<%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+ <%= hidden_field_tag(:kind, :scratch) %>
   <%= submit_tag 'Pet me' %>
   <%end%>
 
 
+<%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+<%= hidden_field_tag(:kind, :feed) %>
+  <%= submit_tag 'Feed Me' %>
+  <%end%>
+
+  <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+<%= hidden_field_tag(:kind, :lick) %>
+  <%= submit_tag 'Lick Me' %>
+  <%end%>
+
+<% if flash[:notice] %>
+  <p><%=flash[:notice]%></p>
+<% end %>
+ <!-- OWNER INTERACTIONS -->
