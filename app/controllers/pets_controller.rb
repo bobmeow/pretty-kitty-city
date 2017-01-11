@@ -1,6 +1,10 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.all
+    if !current_user.nil?
+      @pets = Pet.all
+    else
+      redirect_to '/login'
+    end
   end
 
   def new
