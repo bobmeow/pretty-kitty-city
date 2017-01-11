@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :pet_friends, through: :friendships, source: :pet
   has_secure_password
-  validates :name, presence: true, uniqueness: true
-
+  validates :username, presence: true, uniqueness: true
+  validates :name, presence: true
 
 end
