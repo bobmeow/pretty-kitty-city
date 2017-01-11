@@ -5,20 +5,33 @@ class Pet < ApplicationRecord
 
   validates :name, presence: :true
 
-
-  def is_friend?
-    user = User.find(current_user)
-    people_friends.pluck(:id).include? user.id
+  def is_happy?
+    if mood_level >= 15
+      "😾"
+    elsif mood_level >= 10
+      "😻"
+    elsif mood_level >= 7
+      "😸"
+    elsif mood_level <= 3
+      "😿"
+    else
+      "🐱"
+    end
   end
 
-  def is_owner?
-    user = User.find(current_user)
-    owner_id == user.id
-  end
+  # def is_friend?
+  #   user = User.find(current_user)
+  #   people_friends.pluck(:id).include? user.id
+  # end
 
-  def is_friend_or_owner
-    is_friend? || is_owner?
-  end
+  # def is_owner?
+  #   user = User.find(current_user)
+  #   owner_id == user.id
+  # end
+
+  # def is_friend_or_owner
+  #   is_friend? || is_owner?
+  # end
 
   def current_user
     session[:user_id]

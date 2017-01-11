@@ -26,6 +26,7 @@ class PetsController < ApplicationController
     end
   end
 
+
   def update
     set_pet
     @pet.people_friends << User.find(current_user)
@@ -33,10 +34,6 @@ class PetsController < ApplicationController
   end
 
   private
-
-  def set_pet
-    @pet = Pet.find(params[:id])
-  end
 
   def pet_params
     params.require(:pet).permit(:name)

@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :username
       t.string :password_digest
       t.string :email
-      t.integer :caramel_points
+      t.integer :caramel_points, :default => 0
 
       t.timestamps
     end
