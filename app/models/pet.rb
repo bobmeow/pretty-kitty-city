@@ -5,6 +5,15 @@ class Pet < ApplicationRecord
 
   validates :name, presence: :true
 
+  def is_happy?
+    if mood_level >= 7
+      "😸"
+    elsif mood_level <= 3
+      "😿"
+    else
+      "🐱"
+    end
+  end
 
   def is_friend?
     user = User.find(current_user)
