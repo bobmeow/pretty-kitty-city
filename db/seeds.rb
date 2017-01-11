@@ -1,11 +1,12 @@
 ###User seeds
-User.create(username: "jmpann", name: "Josh", password: 'abc123')
-User.create(username: "rachlovescats", name: "Rachel", password: '12345')
-User.create(username: "kk_antoin", name: "Antoin", password: 'abcde')
-User.create(username: "jj", name: "Jing", password: 'qwerty')
-User.create(username: "bobmeow", name: "Bob", password: 'asdfg')
-User.create(username: 'icandy', name: "Ian", password: 'coffeedad')
-User.create(username: 'fitnessguru', name: "Yomi", password: 'iloveworkingout')
+User.create(username: "jmpann", name: "Josh", password: '123')
+User.create(username: "rachlovescats", name: "Rachel", password: '123')
+User.create(username: "kk_antoin", name: "Antoin", password: '123')
+User.create(username: "jj", name: "Jing", password: '123')
+User.create(username: "bobmeow", name: "Bob", password: '123')
+User.create(username: 'icandy', name: "Ian", password: '123')
+User.create(username: 'fitnessguru', name: "Yomi", password: '123')
+User.create(username: 'a', name: 'a', password: 'a')
 
 ###Pet seeds
 rufus = Pet.create(name: "Rufus", mood_level: 5, owner_id: 1)
@@ -15,6 +16,7 @@ kitty_purry = Pet.create(name: "Kitty Purry", mood_level: 5, owner_id: 4)
 coffee_cat = Pet.create(name: "Coffee Cat", mood_level: 5, owner_id: 5)
 scary_spice = Pet.create(name: "Scary Spice Baby Kat", mood_level: 5, owner_id: 6)
 cheddar_cat = Pet.create(name: "Cheddar Cat", mood_level: 5, owner_id: 7)
+cat_man = Pet.create(name: "the cat man", mood_level: 5, owner_id: 8)
 
 ###Seeding Friends of Cats
 rufus.people_friends << [User.find(2), User.find(3), User.find(4)]
