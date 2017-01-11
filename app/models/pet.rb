@@ -6,7 +6,11 @@ class Pet < ApplicationRecord
   validates :name, presence: :true
 
   def is_happy?
-    if mood_level >= 7
+    if mood_level >= 15
+      "😾"
+    elsif mood_level >= 10
+      "😻"
+    elsif mood_level >= 7
       "😸"
     elsif mood_level <= 3
       "😿"
