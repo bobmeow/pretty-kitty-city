@@ -1,0 +1,7 @@
+<h1>Welcome to Pretty Kitty Shoppy</h1>
+
+Buy some cool things for your cat.
+
+<% @items.each do |i| %>
+  <%= link_to i.emoji, path, method: :post, data: { confirm: "Buy #{i.emoji} for #{i.price} caramel?" } %> = <%= i.price "🍭" %>
+<% end %>
