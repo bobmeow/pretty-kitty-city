@@ -5,3 +5,8 @@
    <li><%= link_to p.name, p %></li>
   <% end %>
 </ol>
+
+<h2>visit these pretty kitties!</h2>
+new cat on the block: <%= link_to @new_cat.name, @new_cat %><br>
+pet me, purrrrease: <%= link_to @needs_love.name, @needs_love %><br>
+super surprise: <%= link_to @surprise_cat.name, @surprise_cat %>
