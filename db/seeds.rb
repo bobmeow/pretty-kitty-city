@@ -40,3 +40,4 @@ Item.create(name: "Martini", emoji: "🍸", price: 25)
 Item.create(name: "Iphone", emoji: "📱", price: 200)
 Item.create(name: "Box", emoji: "📥", price: 30)
 Item.create(name: "Castle", emoji: "🏰", price: 150)
+
