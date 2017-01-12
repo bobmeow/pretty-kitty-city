@@ -41,10 +41,21 @@ All My Friends:
 <% if check_friend_of_pet(@people_friends) %>
 Hi, <%= @user.name %>, we are best friends!
   <%= form_tag("/friendly_interactions/#{@pet.id}", method: 'post') do %>
+      <%= hidden_field_tag(:kind, :scratch) %>
     <%= submit_tag 'Pet me' %>
   <%end%>
+  <%= form_tag("/friendly_interactions/#{@pet.id}", method: 'post') do %>
+      <%= hidden_field_tag(:kind, :play) %>
+    <%= submit_tag 'Play with me' %>
+  <% end %>
+  <% if flash[:notice] %>
+    <p><%=flash[:notice]%></p>
+  <% end %>
 <% end %>
 <br>
+
+
+
 <% if @user.caramel_points > 0 %>
   <%= @user.name %>'s caramel points: <br>
   <% @user.caramel_points.times do %>
