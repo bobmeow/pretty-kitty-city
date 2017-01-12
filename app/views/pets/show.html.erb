@@ -1,18 +1,6 @@
 <h1><%= @pet.name %></h1>
 <h3>Mood Level: <%= @pet.mood_level %></h3>
 <div id="catmogi"><%= @pet.is_happy? %></div>
-All My Friends:
-<ul>
-  <% @people_friends.each do |pf| %>
-    <li><%= link_to pf.name, pf %></li>
-  <% end %>
-</ul>
-<br>
-
-<% unless is_friend_or_owner_of_pet?(@people_friends, @pet) %>
-  <%= button_to 'Be My FRIEND!!!', @pet, method: :patch %>
-<% end %>
-
 <!-- OWNER INTERACTIONS -->
 <% if check_owner_of_pet(@pet) %>
   Hi Owner.
@@ -32,11 +20,32 @@ All My Friends:
       <%= submit_tag 'Lick Me' %>
       <%end%>
 
+      <%= link_to "Let's go shopping!", store_index_path %><br><br>
+
+      <h2>All my treats!!</h2>
+      <% @pet.items.each do |i| %>
+        <%= i.emoji %>
+      <% end %>
+      <br>
+
     <% if flash[:notice] %>
       <p><%=flash[:notice]%></p>
     <% end %>
 <% end %>
  <!-- OWNER INTERACTIONS -->
+
+
+All My Friends:
+<ul>
+  <% @people_friends.each do |pf| %>
+    <li><%= link_to pf.name, pf %></li>
+  <% end %>
+</ul>
+<br>
+
+<% unless is_friend_or_owner_of_pet?(@people_friends, @pet) %>
+  <%= button_to 'Be My FRIEND!!!', @pet, method: :patch %>
+<% end %>
 
 <% if check_friend_of_pet(@people_friends) %>
 Hi, <%= @user.name %>, we are best friends!
