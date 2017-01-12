@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col m6 offset-m3">
 <h1>new user</h1>
 <%= form_for(@user) do |f|%>
 <%= f.label :name %>
@@ -15,5 +17,7 @@
 <%= f.label :email %>
 <%= f.text_field :email %><br>
 
-<%= f.submit %>
+<%= f.button class: "btn pink lighten-3" %>
 <% end %>
+</div>
+</div>

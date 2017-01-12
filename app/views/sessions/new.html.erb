@@ -1,8 +1,14 @@
-<h1>LOGIN</h1>
-<%= form_tag('/login') do %>
-  <%= label_tag id="user[username]", "Username" %>
-  <%= text_field_tag "user[username]" %><br><br>
-  <%= label_tag id="user[password]", "Password" %>
-  <%= password_field_tag "user[password]" %><br>
-  <%= submit_tag "Sign In"%>
-<% end %>
+<div class="row">
+  <div class="col m6 offset-m3">
+    <h1 class="center">LOGIN</h1>
+    <%= form_tag('/login') do %>
+      <%= text_field_tag "user[username]" %>
+      <%= label_tag id="user[username]", "Username" %>
+      <%= password_field_tag "user[password]" %>
+      <%= label_tag id="user[password]", "Password" %>
+      <div class="center-align">
+        <%= button_tag "Sign In", class: 'btn login_btn pink lighten-3 center-align'%>
+      </div>
+    <% end %>
+  </div>
+</div>
