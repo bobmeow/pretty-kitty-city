@@ -20,18 +20,30 @@ class OwnerInteractionsController < ApplicationController
   end
 
   def scratch 
+    if @pet.mood_level < 15 
     @pet.mood_level += 1   
     flash[:notice] = "Purr!!! Thank you for scratching me! My mood has increased by 1. Previously scratched on #{previous_interaction_time}"
+    else
+    flash[:notice] = "**bats hand** go away, human!"
+    end
   end
 
     def feed
-    @pet.mood_level += 2
-    flash[:notice] = "Purr!!! Thank you for feeding me! My mood has increased by 2. Previously fed on #{previous_interaction_time}"
+    if @pet.mood_level < 15   
+      @pet.mood_level += 2
+      flash[:notice] = "Purr!!! Thank you for feeding me! My mood has increased by 2. Previously fed on #{previous_interaction_time}"
+     else 
+      flash[:notice] = "burp! I'm full."
+    end
   end
 
   def lick
-    @pet.mood_level -= 2
-    flash[:notice] = "*Pissed Off Cat Noise* This is weird. My mood has decreased by 2. Previously pissed off on #{previous_interaction_time}"
+    if @pet.mood_level > 1
+      @pet.mood_level -= 2
+      flash[:notice] = "*Pissed Off Cat Noise* This is weird. My mood has decreased by 2. Previously pissed off on #{previous_interaction_time}"
+    else  
+      flash[:notice] = "hissss! This is WEIRD!" 
+    end 
   end
 
   private
