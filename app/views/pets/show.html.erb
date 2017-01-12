@@ -1,6 +1,10 @@
 <h1><%= @pet.name %></h1>
 <h3>Mood Level: <%= @pet.mood_level %></h3>
 <div id="catmogi"><%= @pet.is_happy? %></div>
+All my treats!!<br>
+<h2><% @pet.items.each do |i| %>
+  <%= i.emoji %>
+<% end %></h2>
 <!-- OWNER INTERACTIONS -->
 <% if check_owner_of_pet(@pet) %>
   Hi Owner.
@@ -21,12 +25,6 @@
       <%end%>
 
       <%= link_to "Let's go shopping!", store_index_path %><br><br>
-
-      <h2>All my treats!!</h2>
-      <% @pet.items.each do |i| %>
-        <%= i.emoji %>
-      <% end %>
-      <br>
 
     <% if flash[:notice] %>
       <p><%=flash[:notice]%></p>
