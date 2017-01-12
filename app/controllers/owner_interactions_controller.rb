@@ -1,6 +1,6 @@
 class OwnerInteractionsController < ApplicationController
 
-  def create 
+  def create
     set_pet
     @owner_interactions = OwnerInteraction.create(kind: params[:kind], owner_id: session[:user_id])
 
@@ -13,11 +13,12 @@ class OwnerInteractionsController < ApplicationController
     end
     @pet.save
    redirect_to @pet
-  end 
-
-  def other_action
-     identify_interaction_type
   end
+
+
+
+  def scratch
+    @pet.mood_level += 1
 
   def scratch 
     if @pet.mood_level < 15 
@@ -52,10 +53,10 @@ class OwnerInteractionsController < ApplicationController
     previous_interaction = OwnerInteraction.where(owner_id: session[:user_id]).where(kind: params[:kind]).order(created_at: :desc).second
     if previous_interaction
       formatted_time = previous_interaction.created_at.strftime("%b %d, %I:%M:%p")
-    else 
-      previous_interaction = "never ever before!!!"  
+    else
+      previous_interaction = "never ever before!!!"
     end
-    
+
     #database is in UTC time, five hours ahead of EST
   end
 

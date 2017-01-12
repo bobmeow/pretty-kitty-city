@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112184040) do
+ActiveRecord::Schema.define(version: 20170112190652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendship_interactions", force: :cascade do |t|
+    t.integer  "friendship_id"
+    t.string   "kind"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "pet_id"
@@ -46,10 +53,10 @@ ActiveRecord::Schema.define(version: 20170112184040) do
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
-    t.integer  "mood_level"
+    t.integer  "mood_level", default: 5
     t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,9 +64,9 @@ ActiveRecord::Schema.define(version: 20170112184040) do
     t.string   "username"
     t.string   "password_digest"
     t.string   "email"
-    t.integer  "caramel_points"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "caramel_points",  default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end
