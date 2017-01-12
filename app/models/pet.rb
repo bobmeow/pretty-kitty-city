@@ -2,7 +2,6 @@ class Pet < ApplicationRecord
   belongs_to :owner, :class_name => 'User'
   has_many :friendships
   has_many :people_friends, through: :friendships, source: :user
-
   validates :name, presence: :true
 
   def is_happy?
@@ -17,6 +16,19 @@ class Pet < ApplicationRecord
     else
       "🐱"
     end
+  end
+
+  def self.needs_love
+    self.where(mood_level: [0..6]).shuffle.first
+  end
+
+  def self.new_cat
+    self.order(created_at: :desc).first
+  end
+
+  def self.surprise_cat
+    self.order(created_at: :asc).shuffle.first
+    #self.limit(1).order("RANDOM()")
   end
 
   # def is_friend?
