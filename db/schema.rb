@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(version: 20170112184040) do
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
-    t.integer  "mood_level"
+    t.integer  "mood_level", default: 5
     t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20170112184040) do
     t.string   "username"
     t.string   "password_digest"
     t.string   "email"
-    t.integer  "caramel_points"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "caramel_points",  default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end
