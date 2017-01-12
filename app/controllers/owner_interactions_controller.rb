@@ -3,7 +3,6 @@ class OwnerInteractionsController < ApplicationController
   def create
     set_pet
     @owner_interactions = OwnerInteraction.create(kind: params[:kind], owner_id: session[:user_id])
-
     if params[:kind] == "scratch"
       scratch
     elsif params[:kind] == "feed"
@@ -15,11 +14,6 @@ class OwnerInteractionsController < ApplicationController
    redirect_to @pet
   end
 
-
-
-  def scratch
-    @pet.mood_level += 1
-
   def scratch 
     if @pet.mood_level < 15 
     @pet.mood_level += 1   
@@ -29,22 +23,22 @@ class OwnerInteractionsController < ApplicationController
     end
   end
 
-    def feed
-    if @pet.mood_level < 15   
+   def feed
+    if @pet.mood_level < 15
       @pet.mood_level += 2
       flash[:notice] = "Purr!!! Thank you for feeding me! My mood has increased by 2. Previously fed on #{previous_interaction_time}"
-     else 
+     else
       flash[:notice] = "burp! I'm full."
     end
   end
 
-  def lick
+def lick
     if @pet.mood_level > 1
       @pet.mood_level -= 2
       flash[:notice] = "*Pissed Off Cat Noise* This is weird. My mood has decreased by 2. Previously pissed off on #{previous_interaction_time}"
-    else  
-      flash[:notice] = "hissss! This is WEIRD!" 
-    end 
+    else
+      flash[:notice] = "hissss! This is WEIRD!"
+    end
   end
 
   private
