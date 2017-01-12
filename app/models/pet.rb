@@ -2,6 +2,8 @@ class Pet < ApplicationRecord
   belongs_to :owner, :class_name => 'User'
   has_many :friendships
   has_many :people_friends, through: :friendships, source: :user
+  has_many :pet_items
+  has_many :items, through: :pet_items
   validates :name, presence: :true
 
   def is_happy?
