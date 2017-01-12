@@ -31,22 +31,14 @@ class Pet < ApplicationRecord
     #self.limit(1).order("RANDOM()")
   end
 
-  # def is_friend?
-  #   user = User.find(current_user)
-  #   people_friends.pluck(:id).include? user.id
-  # end
+  ###Methods for Heroku Rake task to decrease pet mood level
 
-  # def is_owner?
-  #   user = User.find(current_user)
-  #   owner_id == user.id
-  # end
-
-  # def is_friend_or_owner
-  #   is_friend? || is_owner?
-  # end
-
-  def current_user
-    session[:user_id]
+  ###this is the rake task
+  def self.update_mood_level
+    Pet.where("mood_level > ?", 0).update_all("mood_level = mood_level - 1")
   end
+
+
+
 
 end
