@@ -1,15 +1,16 @@
+<div class="container">
 <h1>Welcome to Pretty Kitty Shoppy</h1>
 
 Hi, <%= @user.name %>, you have <%= "#{@user.caramel_points} 🍭" %> and you can buy some cool things for your cat.<br><br>
 
 <%= flash[:notice] %>
-<table>
   <% @items.each do |i| %>
-    <tr>
+    <div class="treatz">
     <td><%= i.emoji %></td>
     <td><%= form_tag("/store/#{i.id}", method: :post) do %>
-      <%= submit_tag "#{i.price} 🍭", data: { confirm: "Buy #{i.emoji} for #{i.price} caramel?" } %>
+      <%= button_tag "#{i.price} 🍭", class: 'btn pink lighten-3 btn-flat', data: { confirm: "Buy #{i.emoji} for #{i.price} caramel?" } %>
     <% end %></td>
-    </tr>
+  </div>
   <% end %>
-</table>
+<%= link_to "back to my pet", pet_path(User.find(current_user).pet) %>
+</div>

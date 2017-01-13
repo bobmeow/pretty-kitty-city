@@ -13,24 +13,76 @@
  *= require_tree .
  *= require_self
  */
+ .input-field label {
+   color: #ff69b4 !important;
+ }
+ /* label color */
+ .input-field label {
+   color: #ff69b4 !important;
+ }
+ /* label focus color */
+ .input-field input[type=text]:focus + label {
+   color: #ff69b4 !important;
+ }
+ /* label underline focus color */
+ .input-field input[type=text]:focus {
+   border-bottom: 1px solid #ff69b4 !important;
+   box-shadow: 0 1px 0 0 #ff69b4 !important;
+ }
+ /* password label focus color */
+ .input-field input[type=password]:focus + label {
+   color: #ff69b4 !important;
+ }
+ /* password label underline focus color */
+ .input-field input[type=password]:focus {
+   border-bottom: 1px solid #ff69b4 !important;
+   box-shadow: 0 1px 0 0 #ff69b4 !important;
+ }
+
 .welcome {
     background-image: image-url("background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    font: 4.5em 'Hind', sans-serif;
     color: #ff69b4;
     text-align: center;
-    margin: 350px auto;
+}
+@media (min-width: 700px) {
+  .welcome_h1 {
+    font: 4.5em 'Hind', sans-serif;
+  }
+}
+.welcome_h1 {
+  margin-top: 100px;
 }
 .welcome a {
   text-decoration: none;
+}
+.neon_green {
   color: #b4ff69;
 }
-button .btn .login_btn{
+.hot_pink {
+  color: #ff69b4;
+}
+.nu_h1 {
+  font-size: 50px;
+}
+.btn {
+  margin-bottom: 20px;
   background-color: #ff69b4;
-  cursor: pointer;
-  font-family: fantasy !important;
+}
+.login_page {
+  background-image: image-url("background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 550px;
+}
+.formy {
+  margin: 50px auto;
+}
+.formy_nu {
+  margin: 10px auto;
 }
 body {
    font: 1.4em 'Hind', sans-serif;
@@ -41,6 +93,10 @@ body {
 a {
    text-decoration: none;
    color: #b4ff69 ;
+}
+.back_to_welcome {
+  color: #ff69b4;
+  font-size: 10pt;
 }
 #catmogi {
   font-size: 70pt;
@@ -54,6 +110,12 @@ a {
 .nav li {
   list-style: none;
   list-style-position:inside;
+}
+.action_buttons li {
+  display: inline-block;
+}
+.treatz {
+  display: inline-block;
 }
 ol {
   list-style: none;

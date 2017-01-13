@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,23 +15,7 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-      <div class="col s12 m8 l9">
     <%= yield %>
-    </div>
-    <div class="col s12 m4 l3">
-      <% if current_user && request.env['PATH_INFO'] != '/' %>
-        <div class="nav center-align">
-          <ul>
-          <li><%= link_to "homepage", user_path(current_user) %></li>
-          <li><%= link_to "all pets", pets_path %></li>
-          </ul>
-        </div>
-      <% end %>
-    </div>
-    </div>
-    </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->

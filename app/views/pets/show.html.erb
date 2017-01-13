@@ -1,48 +1,43 @@
-<h1><%= @pet.name %></h1>
-<h3>Mood Level: <%= @pet.mood_level %></h3>
+<div class="row">
+  <div class="col s12 m5 l5 center-align">
+<h3><%= @pet.name %></h3>
+<p>Mood Level: <%= @pet.mood_level %></p>
 <div id="catmogi"><%= @pet.is_happy? %></div>
-All my treats!!<br>
-<h2><% @pet.items.each do |i| %>
-  <%= i.emoji %>
-<% end %></h2>
+
 <!-- OWNER INTERACTIONS -->
+<div class="col s12 m5 l5">
 <% if check_owner_of_pet(@pet) %>
-  Hi Owner.
+  <div class="row">
+    <div class="col s6">
     <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
      <%= hidden_field_tag(:kind, :scratch) %>
-      <%= submit_tag 'Pet me' %>
+      <%= button_tag 'Pet me', class: 'btn btn-flat pink lighten-3 white-text' %>
       <%end%>
+    </div>
 
-
+    <div class="col s6">
     <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
     <%= hidden_field_tag(:kind, :feed) %>
-      <%= submit_tag 'Feed Me' %>
+    <%= button_tag 'Feed Me', class: 'btn btn-flat pink lighten-3 white-text' %>
       <%end%>
+    </div>
 
-      <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
     <%= hidden_field_tag(:kind, :lick) %>
-      <%= submit_tag 'Lick Me' %>
+    <%= button_tag 'Lick Me', class: 'btn btn-flat pink lighten-3 white-text' %>
       <%end%>
 
-      <%= link_to "Let's go shopping!", store_index_path %><br><br>
-
+  </div>
     <% if flash[:notice] %>
       <p><%=flash[:notice]%></p>
     <% end %>
+
+      <%= link_to "Let's go shopping!", store_index_path %><br><br>
+
 <% end %>
- <!-- OWNER INTERACTIONS -->
-
-
-All My Friends:
-<ul>
-  <% @people_friends.each do |pf| %>
-    <li><%= link_to pf.name, pf %></li>
-  <% end %>
-</ul>
-<br>
 
 <% unless is_friend_or_owner_of_pet?(@people_friends, @pet) %>
-  <%= button_to 'Be My FRIEND!!!', @pet, method: :patch %>
+  <%= button_to 'Be My FRIEND!!!', @pet, method: :patch, class: "btn, btn-flat pink lighten-3" %>
 <% end %>
 
 <% if check_friend_of_pet(@people_friends) %>
@@ -60,8 +55,36 @@ Hi, <%= @user.name %>, we are best friends!
   <% end %>
 <% end %>
 <br>
+</div>
+ <!-- OWNER INTERACTIONS -->
+</div>
 
 
+All my treats!!<br>
+<h2><% @pet.items.each do |i| %>
+  <%= i.emoji %>
+<% end %></h2>
+</div>
+
+All My Friends:
+<ul>
+  <% @people_friends.each do |pf| %>
+    <li><%= link_to pf.name, pf %></li>
+  <% end %>
+</ul>
+<br>
+
+<div class="col s12 m2">
+  <ul>
+  <li><p>Hi <%= User.find(current_user).name %></p></li>
+  <li><%= link_to "homepage", user_path(current_user) %></li>
+  <li><%= link_to "my pet", pet_path(User.find(current_user).pet) %></li>
+  <li><%= link_to "all pets", pets_path %></li>
+  <li><%= link_to "logout", logout_path, :method => 'post' %></li>
+  </ul>
+</div>
+
+<div class="row">
 
 <% if @user.caramel_points > 0 %>
   <%= @user.name %>'s caramel points: <br>
@@ -69,3 +92,4 @@ Hi, <%= @user.name %>, we are best friends!
     <div class='candy'>🍭</div>
   <% end %>
 <% end %>
+</div>
