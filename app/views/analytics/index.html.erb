@@ -26,7 +26,7 @@
     <h2>MOST POPULAR CATS</h2>
     <ol>
      <%  @most_popular_cats.each do |user| %>
-     <li>name: <%= user[0][0] %> | pet id: <%= user[0][1] %> |  friends: <%= user[1] %></li>
+     <li>name: <%= user[0][1] %> | pet id: <%= user[0][0] %> |  friends: <%= user[1] %></li>
      <% end %>
     </ol>
    

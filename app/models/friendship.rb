@@ -4,16 +4,10 @@ class Friendship < ApplicationRecord
   has_many :friendship_interactions
 
   def self.friend_adding_leaderboard
-   users_with_count = self.group(:user_id).order('count_id desc').count('id')
-   users = User.find(users_with_count.keys[0..9]).pluck(:username)
-   counts = users_with_count.values[0..9]
-   users.zip(counts)
+     Friendship.joins(:user).group(:username).order('count_id desc').count('id')
   end
 
-  def self.most_popular_cats
-   pets_with_count = self.group(:pet_id).order('count_id desc').count('id')
-   pets = Pet.find(pets_with_count.keys).pluck(:name, :id)
-   counts = pets_with_count.values[0..9]
-   pets.zip(counts)
+  def self.most_popular_cats  
+    Friendship.joins(:pet).group(:pet_id, :name).order('count_id desc').count('id')
   end 
 end
