@@ -12,6 +12,9 @@ class StoreController < ApplicationController
       @user.caramel_points -= @item.price
       @user.save
       @user.pet.items << @item
+      @user.pet.mood_level += @item.mood_level
+      @user.pet.display_gif
+      flash[:notice] = ""
       redirect_to @user.pet
     else
       flash[:notice] = "You do not have enough caramel to buy this item."

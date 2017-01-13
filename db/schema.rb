@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20170113153107) do
+=======
 ActiveRecord::Schema.define(version: 20170113152328) do
+>>>>>>> 760c06e8179b1f656886deb137654850bf5bd010
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170113152328) do
     t.integer  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "mood_level"
   end
 
   create_table "owner_interactions", force: :cascade do |t|

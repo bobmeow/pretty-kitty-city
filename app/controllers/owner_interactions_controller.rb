@@ -9,15 +9,20 @@ class OwnerInteractionsController < ApplicationController
       feed
     elsif params[:kind] == "lick"
       lick
+    elsif params[:kind] == "groom"
+      groom
+    elsif params[:kind] == "play"
+      play
     end
     @pet.save
    redirect_to @pet
   end
 
-  def scratch 
-    if @pet.mood_level < 15 
-    @pet.mood_level += 1   
-    flash[:notice] = "Purr!!! Thank you for scratching me! My mood has increased by 1. Previously scratched on #{previous_interaction_time}"
+  def scratch
+    if @pet.mood_level < 15
+    @pet.mood_level += 1
+    flash[:notice] = " Thank you for scratching me! I'm Happier. Previously scratched on #{previous_interaction_time}"
+    flash[:img_src] =  "#{@owner_interactions.display_gif}"
     else
     flash[:notice] = "**bats hand** go away, human!"
     end
@@ -26,18 +31,44 @@ class OwnerInteractionsController < ApplicationController
    def feed
     if @pet.mood_level < 15
       @pet.mood_level += 2
-      flash[:notice] = "Purr!!! Thank you for feeding me! My mood has increased by 2. Previously fed on #{previous_interaction_time}"
+      @pet.save
+      flash[:notice] = " That was tasty. Previously fed on #{previous_interaction_time}"
+      flash[:img_src] =  "#{@owner_interactions.display_gif}"
      else
       flash[:notice] = "burp! I'm full."
     end
   end
 
-def lick
-    if @pet.mood_level > 1
-      @pet.mood_level -= 2
-      flash[:notice] = "*Pissed Off Cat Noise* This is weird. My mood has decreased by 2. Previously pissed off on #{previous_interaction_time}"
+  def play
+   if @pet.mood_level < 15
+     @pet.mood_level += 1
+     @pet.save
+     flash[:notice] = " That was fun. Previously played with on #{previous_interaction_time}"
+     flash[:img_src] =  "#{@owner_interactions.display_gif}"
     else
-      flash[:notice] = "hissss! This is WEIRD!"
+     flash[:notice] = "burp! I'm full."
+   end
+ end
+
+ def groom
+  if @pet.mood_level < 15
+    @pet.mood_level += 2
+    @pet.save
+    flash[:notice] = " That was tasty. Previously fed on #{previous_interaction_time}"
+    flash[:img_src] =  "#{@owner_interactions.display_gif}"
+   else
+    flash[:notice] = "burp! I'm full."
+  end
+end
+
+def lick
+    if @pet.mood_level > 0
+      @pet.mood_level -= 2
+      @pet.save
+      flash[:notice] = "MEOW! Previously annoyed on #{previous_interaction_time}"
+      flash[:img_src] =  "#{@owner_interactions.display_gif}"
+    else
+      flash[:notice] = "hisss! This is WEIRD!"
     end
   end
 

@@ -22,6 +22,18 @@
   <%= hidden_field_tag(:kind, :lick) %>
   <%= button_tag 'Lick Me', class: 'btn btn-flat pink lighten-3 white-text' %>
 <%end%>
+
+<%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+ <%= hidden_field_tag(:kind, :play) %>
+  <%= button_tag 'Play with me', class: 'btn btn-flat pink lighten-3 white-text' %>
+  <%end%>
+
+  <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+   <%= hidden_field_tag(:kind, :groom) %>
+    <%= button_tag 'Groom me', class: 'btn btn-flat pink lighten-3 white-text' %>
+    <%end%>
+
+
 <%= link_to "Let's go shopping!", store_index_path %><br><br>
 <% end %>
 <!-- OWNER INTERACTIONS Above-->
@@ -45,9 +57,11 @@ Hi, <%= @user.name %>, we are best friends!
 </div>
 
 <div class="col s6 m5 l5">
-<% if flash[:notice] %>
-  <p><%=flash[:notice]%></p>
-<% end %>
+  <% if flash[:img_src] %>
+    <p><%=flash[:img_src].html_safe%><br> <%=flash[:notice]%></p>
+    <% else %>
+    <%= flash[:notice] %>
+  <% end %>
 
 <p>Mood Level: <%= @pet.mood_level %></p>
 <div id="catmogi"><%= @pet.is_happy? %></div>
