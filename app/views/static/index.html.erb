@@ -1,11 +1,9 @@
 <body class='welcome'>
-
-
-    Welcome to Pretty Kitty City
-    <br>
+    <h1 class="welcome_h1">Welcome to Pretty Kitty City</h1>
     <% if current_user %>
-      <%= link_to "homepage", user_path(current_user) %>
+    <h2 class="welcome_h2"><%= link_to "homepage", user_path(current_user), class: 'neon_green' %></h2>
     <% else %>
-      <%= link_to 'Sign Up', new_user_path %> or <%= link_to 'Log In', login_path %>
+      <h2 class="welcome_h2"><%= link_to 'Sign Up', new_user_path, class: 'neon_green' %> or <%= link_to 'Log In', login_path, class: 'neon_green' %></h2>
     <% end %>
+    <a href="https://github.com/bobertoo/pretty-kitty-city" class="hot_pink">Fork me on Github!</a>
 </body>

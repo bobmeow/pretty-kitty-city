@@ -1,19 +1,34 @@
-<h1>new user</h1>
-<%= form_for(@user) do |f|%>
-<%= f.label :name %>
-<%= f.text_field :name %><br>
+<body class="welcome">
+  <div class="row">
+    <div class="col m6 offset-m3 offset-s2 pink lighten-5 z-depth-5 formy_nu">
+      <h1 class="center nu_h1">new user</h1>
+      <%= form_for(@user) do |f|%>
+      <div class="input-field">
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+      </div>
+      <div class="input-field">
+        <%= f.label :username %>
+        <%= f.text_field :username %><br>
+      </div>
+      <div class="input-field">
+        <%= f.label :password %>
+        <%= f.password_field :password %><br>
+      </div>
+      <div class="input-field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %><br>
+      </div>
+      <div class="input-field">
+        <%= f.label :email %>
+        <%= f.text_field :email %><br>
+      </div>
+      <div class="center-align">
+        <%= f.button class: "btn login_btn pink lighten-3 btn-flat" %>
+      </div>
+      <% end %>
+      <%= link_to 'back to welcome page', '/', class: 'back_to_welcome' %>
+    </div>
 
-<%= f.label :username %>
-<%= f.text_field :username %><br>
-
-<%= f.label :password %>
-<%= f.password_field :password %><br>
-
-<%= f.label :password_confirmation %>
-<%= f.password_field :password_confirmation %><br>
-
-<%= f.label :email %>
-<%= f.text_field :email %><br>
-
-<%= f.submit %>
-<% end %>
+  </div>
+</body>
