@@ -23,6 +23,8 @@ class FriendshipInteractionsController < ApplicationController
       scratch
     elsif params[:kind] == "play"
       play
+    elsif params[:kind] == "groom"
+      groom
     end
     @user.save
     redirect_to @pet
@@ -30,13 +32,23 @@ class FriendshipInteractionsController < ApplicationController
 
     def scratch
       @user.caramel_points += 1
-      flash[:notice] = "Purr!!! Thank you for scratching me! I'm giving you 1 Caramel Point."
+      flash[:notice] = "Purr!!!  Thank you for scratching me! I'm giving Caramel Points."
     end
 
     def play
       @user.caramel_points += 2
-      flash[:notice] = "Purr!!! Thank you for playing with me! You've earned 2 Caramel Points."
+      flash[:notice] = "Purr!!! Thank you for playing with me! You've Caramel Points."
     end
+
+    def groom
+      @user.caramel_points += 2
+        flash[:notice] = "Purr!!! Thank you for grooming me. Have some Caramel Points."
+    end
+
+
+
+###ADDED 1 MORE FUNCTION
+
 
 
 

@@ -4,8 +4,8 @@
 <p>Mood Level: <%= @pet.mood_level %></p>
 <div id="catmogi"><%= @pet.is_happy? %></div>
 
-  
-  
+
+
 <!-- OWNER INTERACTIONS Below-->
 <div class="col s12 m5 l5">
 <% if check_owner_of_pet(@pet) %>
@@ -30,13 +30,35 @@
     <%= button_tag 'Lick Me', class: 'btn btn-flat pink lighten-3 white-text' %>
       <%end%>
     </div>
-    
-    <% if flash[:notice] %>
-      <p><%=flash[:notice]%></p>
+
+    <div class="col s6">
+    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+     <%= hidden_field_tag(:kind, :groom) %>
+      <%= button_tag 'Groom me', class: 'btn btn-flat pink lighten-3 white-text' %>
+      <%end%>
+    </div>
+
+    <div class="col s6">
+    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+     <%= hidden_field_tag(:kind, :play) %>
+      <%= button_tag 'Play with me', class: 'btn btn-flat pink lighten-3 white-text' %>
+      <%end%>
+    </div>
+    <!-- OWNER INTERACTIONS Above-->
+<!-- CHANGES TO FLASH NOTICE -->
+<br>
+<br>
+<br>
+<br>
+    <% if flash[:img_src] %>
+      <p><%=flash[:img_src].html_safe%><br> <%=flash[:notice]%></p>
+      <% else %>
+      <%= flash[:notice] %>
     <% end %>
   </div>
-  
-    <!-- OWNER INTERACTIONS Above-->
+  <!-- CHANGES TO FLASH NOTICE -->
+
+
 
 
       <%= link_to "Let's go shopping!", store_index_path %><br><br>
@@ -52,8 +74,8 @@
 </ul>
 <br>
 
-  
-  
+
+
   <!-- FRIEND INTERACTIONS BELOW -->
 <% unless is_friend_or_owner_of_pet?(@people_friends, @pet) %>
   <%= button_to 'Be My FRIEND!!!', @pet, method: :patch, class: "btn, btn-flat pink lighten-3" %>
@@ -73,7 +95,7 @@ Hi, <%= @user.name %>, we are best friends!
     <p><%=flash[:notice]%></p>
   <% end %>
 <% end %>
-  
+
 
 <br>
 </div>
