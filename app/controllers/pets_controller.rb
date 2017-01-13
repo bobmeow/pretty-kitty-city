@@ -17,6 +17,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.owner = User.find(current_user)
+    @pet.photo_number = rand(19)
     if @pet.save
       redirect_to pet_path(@pet)
     else
