@@ -27,6 +27,7 @@ coffee_cat.people_friends << [User.find(2), User.find(3), User.find(4), User.fin
 scary_spice.people_friends << [User.find(2), User.find(1)]
 cheddar_cat.people_friends << [User.find(5), User.find(3), User.find(6)]
 
+<<<<<<< HEAD
 ###Seeding items
 Item.create(name: "Crown", emoji: "👑", price: 100, mood_level: 6)
 Item.create(name: "Top Hat", emoji: "🎩", price: 10, mood_level: 2)
@@ -40,3 +41,25 @@ Item.create(name: "Martini", emoji: "🍸", price: 25, mood_level: 3)
 Item.create(name: "Iphone", emoji: "📱", price: 200, mood_level: 10)
 Item.create(name: "Box", emoji: "📥", price: 30, mood_level: 3)
 Item.create(name: "Castle", emoji: "🏰", price: 150, mood_level: 8)
+=======
+# ###Seeding items
+# Item.create(name: "Crown", emoji: "👑", price: 100)
+# Item.create(name: "Top Hat", emoji: "🎩", price: 10)
+# Item.create(name: "Bikini", emoji: "👙", price: 1000)
+# Item.create(name: "Pizza", emoji: "🍕", price: 1)
+# Item.create(name: "Treat", emoji: "🎾", price: 4)
+# Item.create(name: "Shrimp", emoji: "🍤", price: 5)
+# Item.create(name: "Sushi", emoji: "🍣", price: 10)
+# Item.create(name: "Toy Mouse", emoji: "🐭", price: 12)
+# Item.create(name: "Martini", emoji: "🍸", price: 25)
+# Item.create(name: "Iphone", emoji: "📱", price: 200)
+# Item.create(name: "Box", emoji: "📥", price: 30)
+# Item.create(name: "Castle", emoji: "🏰", price: 150)
+
+# ### Add photo number to pets
+pets = Pet.all
+pets.each do |p|
+  p.photo_number = rand(23)
+  p.save
+end
+>>>>>>> 760c06e8179b1f656886deb137654850bf5bd010

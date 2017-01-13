@@ -4,8 +4,11 @@
 <p>Mood Level: <%= @pet.mood_level %></p>
 <div id="catmogi"><%= @pet.is_happy? %></div>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 760c06e8179b1f656886deb137654850bf5bd010
 <!-- OWNER INTERACTIONS Below-->
 <div class="col s12 m5 l5">
 <% if check_owner_of_pet(@pet) %>
@@ -31,6 +34,7 @@
       <%end%>
     </div>
 
+<<<<<<< HEAD
     <div class="col s6">
     <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
      <%= hidden_field_tag(:kind, :groom) %>
@@ -59,6 +63,14 @@
   <!-- CHANGES TO FLASH NOTICE -->
 
 
+=======
+    <% if flash[:notice] %>
+      <p><%=flash[:notice]%></p>
+    <% end %>
+  </div>
+
+    <!-- OWNER INTERACTIONS Above-->
+>>>>>>> 760c06e8179b1f656886deb137654850bf5bd010
 
 
       <%= link_to "Let's go shopping!", store_index_path %><br><br>
@@ -133,6 +145,10 @@ All My Friends:
   <%= "I was #{kind} on #{time}." %><br>
 <%end%><br>
 <!-- List of most Recent Friend Interactions above -->
+
+<!-- display pet profile photo -->
+<%= image_tag "profile_photos/#{@pet.photo_number}.jpg" %>
+<!-- end display pet profile photo -->
 
 
 <div class="row">
