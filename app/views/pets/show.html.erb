@@ -4,11 +4,14 @@
     <% end %>
 <h3>Mood Level: <%= @pet.mood_level %></h3>
 <div id="catmogi"><%= @pet.is_happy? %></div>
+
 All my treats!!<br>
 <h2><% @pet.items.each do |i| %>
   <%= i.emoji %>
 <% end %></h2>
-<!-- OWNER INTERACTIONS -->
+<!-- OWNER INTERACTIONS Below-->
+
+
 <% if check_owner_of_pet(@pet) %>
   Hi <%= @user.name %>,
       <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
@@ -28,20 +31,11 @@ All my treats!!<br>
       <%end%>
 
       <%= link_to "Let's go shopping!", store_index_path %><br><br>
-
-
-      <h2>All my treats!!</h2>
-      <% @pet.items.each do |i| %>
-        <%= i.emoji %>
-      <% end %>
-      <br>
-
-   
 <% end %>
- <!-- OWNER INTERACTIONS -->
+ <!-- OWNER INTERACTIONS Above-->
 
 
-All My Friends:
+<h3>All My Friends:</h3>
 <ul>
   <% @people_friends.each do |pf| %>
     <li><%= link_to pf.name, pf %></li>
@@ -67,8 +61,13 @@ Hi, <%= @user.name %>, we are best friends!
     <p><%=flash[:notice]%></p>
   <% end %>
 <% end %>
-<br>
 
+<!-- Friendship Interaction list below -->
+<h3> Most Recent Friend Interactions:</h3>
+<% @pet.kind_and_time_array.each do |kind, time| %>
+  <%= "I was #{kind} on #{time}." %><br>
+<%end%><br>
+<!-- Friendship Interaction list above -->
 
 
 <% if @user.caramel_points > 0 %>

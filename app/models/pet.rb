@@ -44,7 +44,44 @@ class Pet < ApplicationRecord
     Pet.where("mood_level > ?", 0).update_all("mood_level = mood_level - 1")
   end
 
+  def all_friendships
+    self.friendships
+  end
 
+  def all_friendship_interactions_ids
+  all_friendships.collect do |friendship|
+      friendship.friendship_interactions.pluck(:id)
+    end.flatten
+  end
 
+  def three_most_recent_interactions
+    FriendshipInteraction.where(id: all_friendship_interactions_ids).select('kind, created_at, id').order(created_at: :desc).limit(3)
+      # all_friendship_interactions[0].select("kind, created_at").order(created_at: :desc).limit(3)
+  end
+
+  def array_of_interaction_times
+    three_most_recent_interactions.pluck(:created_at)
+  end
+
+  def convert_time
+    array_of_interaction_times.collect do |time|
+      time.strftime("%b %d, %I:%M:%p")
+    end
+  end
+
+  def extract_kind
+    three_most_recent_interactions.pluck(:kind)
+  end
+
+  def kind_conversion_for_display
+    extract_kind.each do |kind|
+      kind.gsub!("play","played with")
+      kind.gsub!("scratch", "scratched at")
+    end
+  end
+
+  def kind_and_time_array
+    kind_conversion_for_display.zip(convert_time)
+  end
 
 end
