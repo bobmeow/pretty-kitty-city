@@ -2,6 +2,7 @@ class OwnerInteraction < ApplicationRecord
 
 belongs_to :owner, :class_name => 'User'
 
+
   def display_gif
     if self.kind == "scratch"
       display_scratch_gif
@@ -31,5 +32,8 @@ end
   def display_lick_gif
     '<a href="http://giphy.com/gifs/cat-discussion-lists-5LU6ZcEGBbhVS">*hiss*!</a>'
   end
+
+validates :owner_id, :kind, presence: true
+
 
 end
