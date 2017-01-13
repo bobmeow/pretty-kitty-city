@@ -1,0 +1,44 @@
+<h1>Analytics</h1>
+
+
+    
+  <h2>TOP CARAMEL EARNERS</h2>
+   <ol>
+    <% @most_caramel_points.each do |name| %>
+      <li><%= name %> </li>
+    <% end %>
+    </ol>
+
+  <h2>MOST RECENT TYPES OF FRIENSHIP INTERACTION</h2>
+  <ol>
+    <% @latest_friendship_interactions.each do |interaction| %>
+      <li><%= interaction %> </li>
+    <% end %>
+    </ol>
+
+   <h2>TOP USERS ADDING FRIENDS</h2>
+    <ol>
+     <% @friend_adding_leaderboard.each do |user| %>
+     <li>username: <%= user[0] %>  |  friends added: <%= user[1] %></li>
+     <% end %>
+    </ol>
+
+    <h2>MOST POPULAR CATS</h2>
+    <ol>
+     <%  @most_popular_cats.each do |user| %>
+     <li>name: <%= user[0][0] %> | pet id: <%= user[0][1] %> |  friends: <%= user[1] %></li>
+     <% end %>
+    </ol>
+   
+
+
+  <h2>HAPPY CATS</h2>
+  <ol>
+    <% @happiest_cats.each do |cat| %>
+   <li> name: <%= cat[0] %>  |  mood level:<%= cat[1] %></li>
+    <% end %>
+  </ol>  
+
+
+    
+ 
