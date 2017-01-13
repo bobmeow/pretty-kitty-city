@@ -5,7 +5,6 @@
 <div id="catmogi"><%= @pet.is_happy? %></div>
 
 
-
 <!-- OWNER INTERACTIONS Below-->
 <div class="col s12 m5 l5">
 <% if check_owner_of_pet(@pet) %>
@@ -30,6 +29,7 @@
     <%= button_tag 'Lick Me', class: 'btn btn-flat pink lighten-3 white-text' %>
       <%end%>
     </div>
+
 
     <div class="col s6">
     <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
@@ -57,7 +57,6 @@
     <% end %>
   </div>
   <!-- CHANGES TO FLASH NOTICE -->
-
 
 
 
@@ -133,6 +132,10 @@ All My Friends:
   <%= "I was #{kind} on #{time}." %><br>
 <%end%><br>
 <!-- List of most Recent Friend Interactions above -->
+
+<!-- display pet profile photo -->
+<%= image_tag "profile_photos/#{@pet.photo_number}.jpg" %>
+<!-- end display pet profile photo -->
 
 
 <div class="row">
