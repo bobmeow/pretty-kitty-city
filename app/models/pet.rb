@@ -30,7 +30,11 @@ class Pet < ApplicationRecord
 
   def self.surprise_cat
     self.order(created_at: :asc).shuffle.first
-    #self.limit(1).order("RANDOM()")
+  end
+
+  #analytics
+  def self.happiest_cats
+    self.where(mood_level: [10..15]).pluck(:name, :mood_level)
   end
 
   ###Methods for Heroku Rake task to decrease pet mood level
