@@ -5,6 +5,7 @@ class Pet < ApplicationRecord
   has_many :pet_items
   has_many :items, through: :pet_items
   validates :name, presence: :true
+  before_save :check_mood_level
 
   def is_happy?
     if mood_level >= 15
@@ -30,11 +31,7 @@ class Pet < ApplicationRecord
 
   def self.surprise_cat
     self.order(created_at: :asc).shuffle.first
-  end
-
-  #analytics
-  def self.happiest_cats
-    self.where(mood_level: [10..15]).pluck(:name, :mood_level)
+    #self.limit(1).order("RANDOM()")
   end
 
   ###Methods for Heroku Rake task to decrease pet mood level
@@ -83,5 +80,14 @@ class Pet < ApplicationRecord
   def kind_and_time_array
     kind_conversion_for_display.zip(convert_time)
   end
+
+  def check_mood_level
+    if self.mood_level > 15
+        self.mood_level = 15
+    elsif self.mood_level < 0
+        self.mood_level = 0
+    end
+  end
+
 
 end
