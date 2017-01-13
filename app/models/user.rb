@@ -7,4 +7,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   has_many :owner_interactions
 
+#analytics
+  def self.most_caramel_points
+    self.order(caramel_points: :desc).limit(10).pluck(:username)
+  end
+
 end
