@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   post "/friendly_interactions/:id", to: "friendship_interactions#create", as: 'new_friendship_interaction'
   post '/owner_interactions/:id', to: 'owner_interactions#create'
   post '/store/:id', to: 'store#create'
+
+  get '/analytics', to: 'analytics#index'
 end
