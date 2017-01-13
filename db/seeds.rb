@@ -44,6 +44,6 @@
 # ### Add photo number to pets
 pets = Pet.all
 pets.each do |p|
-  p.photo_number = rand(19)
+  p.photo_number = rand(23)
   p.save
 end
