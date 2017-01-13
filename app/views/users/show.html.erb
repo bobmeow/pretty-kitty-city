@@ -20,7 +20,7 @@
 
 
 <% if @user.caramel_points > 0 %>
-  <%= @user.name %>'s caramel points: <br>
+  <%= @user.name %>'s caramel points: <%= @user.caramel_points %><br>
   <% @user.caramel_points.times do %>
     <div class='candy'>🍭</div>
   <% end %>

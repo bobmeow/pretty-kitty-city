@@ -1,4 +1,7 @@
 <h1><%= @pet.name %></h1>
+<% if flash[:notice] %>
+      <p><%=flash[:notice]%></p>
+    <% end %>
 <h3>Mood Level: <%= @pet.mood_level %></h3>
 <div id="catmogi"><%= @pet.is_happy? %></div>
 All my treats!!<br>
@@ -7,8 +10,8 @@ All my treats!!<br>
 <% end %></h2>
 <!-- OWNER INTERACTIONS -->
 <% if check_owner_of_pet(@pet) %>
-  Hi Owner.
-    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
+  Hi <%= @user.name %>,
+      <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
      <%= hidden_field_tag(:kind, :scratch) %>
       <%= submit_tag 'Pet me' %>
       <%end%>
@@ -26,9 +29,14 @@ All my treats!!<br>
 
       <%= link_to "Let's go shopping!", store_index_path %><br><br>
 
-    <% if flash[:notice] %>
-      <p><%=flash[:notice]%></p>
-    <% end %>
+
+      <h2>All my treats!!</h2>
+      <% @pet.items.each do |i| %>
+        <%= i.emoji %>
+      <% end %>
+      <br>
+
+   
 <% end %>
  <!-- OWNER INTERACTIONS -->
 
@@ -64,7 +72,8 @@ Hi, <%= @user.name %>, we are best friends!
 
 
 <% if @user.caramel_points > 0 %>
-  <%= @user.name %>'s caramel points: <br>
+  <%= @user.name %>'s caramel points: <%= @user.caramel_points %><br>
+
   <% @user.caramel_points.times do %>
     <div class='candy'>🍭</div>
   <% end %>
