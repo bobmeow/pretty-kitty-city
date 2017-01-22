@@ -1,0 +1,13 @@
+<%= form_tag('/admins') do %>
+      
+        <%= label_tag "user[username]", "Username" %>
+        <%= text_field_tag "user[username]" %>
+      
+     
+        <%= label_tag "user[password]", "Password" %>
+        <%= password_field_tag "user[password]" %>
+     
+     
+        <%= button_tag "Sign In", class: 'btn login_btn btn-flat pink lighten-3'%>
+     
+      <% end %>

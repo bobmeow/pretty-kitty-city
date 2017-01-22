@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170113153107) do
-=======
-ActiveRecord::Schema.define(version: 20170113152328) do
->>>>>>> 760c06e8179b1f656886deb137654850bf5bd010
+ActiveRecord::Schema.define(version: 20170122201211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+  end
 
   create_table "friendship_interactions", force: :cascade do |t|
     t.integer  "friendship_id"
