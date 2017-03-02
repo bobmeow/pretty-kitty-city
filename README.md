@@ -1,24 +1,5 @@
-# README
+# Pretty Kitty City
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A site for cat-lovers to socialize with cats. Care for your kitty, play with cat friends, and earn points to buy adorable kitty treats!
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<a href="http://www.prettykitty.city/">Play the game</a> on our live site.
