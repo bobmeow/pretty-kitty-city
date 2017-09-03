@@ -11,3 +11,10 @@ task :update_mood_level => :environment do
   Pet.update_mood_level
   puts "done."
 end
+
+desc "Task to get rid of friendship interactions that are older than 3 days"
+task :delete_if_outdated => :environment do
+  puts "Removing friendship interactions older than 3 days"
+  FriendshipInteraction.delete_if_outdated
+  puts "done."
+end
