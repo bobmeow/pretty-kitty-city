@@ -36,7 +36,5 @@ class ApplicationController < ActionController::Base
 
   def set_pet
     @pet = Pet.find(params[:id])
-  end 
-
+  end
 end
- 

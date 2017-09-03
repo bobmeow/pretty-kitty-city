@@ -2,9 +2,9 @@ class PetsController < ApplicationController
   def index
     if !current_user.nil?
       @pets = Pet.all
-       @new_cat = Pet.new_cat
-       @needs_love = Pet.needs_love
-       @surprise_cat = Pet.surprise_cat
+      @new_cat = Pet.new_cat
+      @needs_love = Pet.needs_love
+      @surprise_cat = Pet.surprise_cat
     else
       redirect_to '/login'
     end
@@ -32,8 +32,7 @@ class PetsController < ApplicationController
       @people_friends = @pet.people_friends
     end
   end
-
-
+  
   def update
     set_pet
     @pet.people_friends << User.find(current_user)

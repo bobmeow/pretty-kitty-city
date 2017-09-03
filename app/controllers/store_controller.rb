@@ -1,5 +1,4 @@
 class StoreController < ApplicationController
-
   def index
     set_current_user
     @items = Item.order('price').all
@@ -19,5 +18,4 @@ class StoreController < ApplicationController
       render :index
     end
   end
-
 end
