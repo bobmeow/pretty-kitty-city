@@ -28,16 +28,19 @@ class FriendshipInteractionsController < ApplicationController
     redirect_to @pet
   end
 
-    def scratch
-      @user.caramel_points += 1
-      flash[:notice] = "Purr!!! Thank you for scratching me! I'm giving you 1 Caramel Point."
-    end
+  def scratch
+    @user.caramel_points += 1
+    flash[:notice] = "Purr!!! Thank you for scratching me! I'm giving you 1 Caramel Point."
+  end
 
-    def play
-      @user.caramel_points += 2
-      flash[:notice] = "Purr!!! Thank you for playing with me! You've earned 2 Caramel Points."
-    end
+  def play
+    @user.caramel_points += 2
+    flash[:notice] = "Purr!!! Thank you for playing with me! You've earned 2 Caramel Points."
+  end
 
 
+  def self.delete_if_outdated
+    FriendshipInteraction.where("created_at < ?", 3.days.ago).destroy_all
+  end
 
 end
