@@ -1,6 +1,9 @@
 .nav {
   float: right;
   background-color: $nav-bg-color;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
 
   ul {
     padding: 20px;
