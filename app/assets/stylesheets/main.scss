@@ -5,15 +5,15 @@
 @import 'base/globals';
 
 @import 'layout/layout';
-@import 'layout/forms';
+@import 'layout/nav';
 
 @import 'modules/buttons';
 @import 'modules/caramel';
-@import 'modules/nav';
+@import 'modules/forms';
 
 @import 'pages/static';
 @import 'pages/signup';
 @import 'pages/login';
-@import 'pages/store';
-@import 'pages/pets';
 @import 'pages/users';
+@import 'pages/pets';
+@import 'pages/store';

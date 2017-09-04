@@ -11,15 +11,8 @@
 
   <body>
     <% if current_user && request.env['PATH_INFO'] != '/' && request.env['PATH_INFO'] != '/pets/new' %>
-      <div class="nav">
-        <ul>
-        <li><%= link_to "homepage", user_path(current_user) %></li>
-        <li><%= link_to "all pets", pets_path %></li>
-        <li><%= link_to "logout", logout_path, :method => 'post' %></li>
-        </ul>
-      </div>
+      <%= render "layouts/nav" %>
     <% end %>
-
     <%= yield %>
   </body>
 </html>
