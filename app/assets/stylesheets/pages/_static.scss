@@ -1,0 +1,17 @@
+.welcome {
+  background-image: image-url("background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: $text-font;
+  font-size: 4.5em;
+  color: $text-color;
+  text-align: center;
+  margin: 350px auto;
+
+  a {
+    text-decoration: none;
+    color: $link-color;
+  }
+
+}
