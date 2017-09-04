@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <% if current_user && request.env['PATH_INFO'] != '/' %>
+    <% if current_user && request.env['PATH_INFO'] != '/' && request.env['PATH_INFO'] != '/pets/new' %>
       <div class="nav">
         <ul>
         <li><%= link_to "homepage", user_path(current_user) %></li>
