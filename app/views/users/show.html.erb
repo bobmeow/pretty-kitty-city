@@ -12,12 +12,6 @@
 <% end %>
 </ul>
 
-<% if current_user %>
-  <%= link_to "Logout", logout_path, :method => 'post' %>
-<%end%><br>
-<!--- move this logout button to the nav bar or someplace else -->
-
-
 
 <% if @user.caramel_points > 0 %>
   <%= @user.name %>'s caramel points: <br>

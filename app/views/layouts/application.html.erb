@@ -15,6 +15,7 @@
         <ul>
         <li><%= link_to "homepage", user_path(current_user) %></li>
         <li><%= link_to "all pets", pets_path %></li>
+        <li><%= link_to "logout", logout_path, :method => 'post' %></li>
         </ul>
       </div>
     <% end %>
