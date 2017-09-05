@@ -1,9 +1,8 @@
 .nav {
   float: right;
   background-color: $nav-bg-color;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
+  width: 200px;
+  height: 200px;
 
   ul {
     padding: 20px;
@@ -12,5 +11,12 @@
   li {
     list-style: none;
     list-style-position:inside;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .nav {
+    position: sticky;
+    top: 0;
   }
 }

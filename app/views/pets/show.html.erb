@@ -1,71 +1,75 @@
-<h1><%= @pet.name %></h1>
-<h3>Mood Level: <%= @pet.mood_level %></h3>
-<div id="catmogi"><%= @pet.is_happy? %></div>
-All my treats!!<br>
-<h2><% @pet.items.each do |i| %>
-  <%= i.emoji %>
-<% end %></h2>
-<!-- OWNER INTERACTIONS -->
-<% if check_owner_of_pet(@pet) %>
-  Hi Owner.
-    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
-     <%= hidden_field_tag(:kind, :scratch) %>
-      <%= submit_tag 'Pet me' %>
+<body class="pet">
+  <section class="pet-profile">
+    <h1><%= @pet.name %></h1>
+    <h3>Mood Level: <%= @pet.mood_level %></h3>
+    <div id="catmogi"><%= @pet.is_happy? %></div>
+    All my treats!!<br>
+    <h2><% @pet.items.each do |i| %>
+      <%= i.emoji %>
+    <% end %></h2>
+  </section>
+
+  <section class="owner-interactions">
+    <% if check_owner_of_pet(@pet) %>
+      Hi Owner.
+      <%= form_tag("/owner_interactions/#{@pet.id}", method: "post") do %>
+        <%= hidden_field_tag(:kind, :scratch) %>
+        <%= submit_tag "Pet me" %>
       <%end%>
 
-
-    <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
-    <%= hidden_field_tag(:kind, :feed) %>
-      <%= submit_tag 'Feed Me' %>
+      <%= form_tag("/owner_interactions/#{@pet.id}", method: "post") do %>
+        <%= hidden_field_tag(:kind, :feed) %>
+        <%= submit_tag "Feed Me" %>
       <%end%>
 
-      <%= form_tag("/owner_interactions/#{@pet.id}", method: 'post') do %>
-    <%= hidden_field_tag(:kind, :lick) %>
-      <%= submit_tag 'Lick Me' %>
+      <%= form_tag("/owner_interactions/#{@pet.id}", method: "post") do %>
+        <%= hidden_field_tag(:kind, :lick) %>
+        <%= submit_tag "Lick Me" %>
       <%end%>
 
       <%= link_to "Let's go shopping!", store_index_path %><br><br>
 
-    <% if flash[:notice] %>
-      <p><%=flash[:notice]%></p>
+      <% if flash[:notice] %>
+        <p><%=flash[:notice]%></p>
+      <% end %>
     <% end %>
-<% end %>
- <!-- OWNER INTERACTIONS -->
+  </section>
 
+  <section class="pet-human-friends">
+    All My Friends:
+    <ul>
+      <% @people_friends.each do |pf| %>
+        <li><%= link_to pf.name, pf %></li>
+      <% end %>
+    </ul>
+    <br>
 
-All My Friends:
-<ul>
-  <% @people_friends.each do |pf| %>
-    <li><%= link_to pf.name, pf %></li>
-  <% end %>
-</ul>
-<br>
+    <% unless is_friend_or_owner_of_pet?(@people_friends, @pet) %>
+      <%= button_to "Be My FRIEND!!!", @pet, method: :patch %>
+    <% end %>
 
-<% unless is_friend_or_owner_of_pet?(@people_friends, @pet) %>
-  <%= button_to 'Be My FRIEND!!!', @pet, method: :patch %>
-<% end %>
+    <% if check_friend_of_pet(@people_friends) %>
+      Hi, <%= @user.name %>, we are best friends!
+      <%= form_tag("/friendly_interactions/#{@pet.id}", method: "post") do %>
+        <%= hidden_field_tag(:kind, :scratch) %>
+        <%= submit_tag "Pet me" %>
+      <%end%>
+      <%= form_tag("/friendly_interactions/#{@pet.id}", method: "post") do %>
+        <%= hidden_field_tag(:kind, :play) %>
+        <%= submit_tag "Play with me" %>
+      <% end %>
+      <% if flash[:notice] %>
+        <p><%=flash[:notice]%></p>
+      <% end %>
+    <% end %>
+  </section>
 
-<% if check_friend_of_pet(@people_friends) %>
-Hi, <%= @user.name %>, we are best friends!
-  <%= form_tag("/friendly_interactions/#{@pet.id}", method: 'post') do %>
-      <%= hidden_field_tag(:kind, :scratch) %>
-    <%= submit_tag 'Pet me' %>
-  <%end%>
-  <%= form_tag("/friendly_interactions/#{@pet.id}", method: 'post') do %>
-      <%= hidden_field_tag(:kind, :play) %>
-    <%= submit_tag 'Play with me' %>
-  <% end %>
-  <% if flash[:notice] %>
-    <p><%=flash[:notice]%></p>
-  <% end %>
-<% end %>
-<br>
-
-
-
-<% if @user.caramel_points > 0 %>
-  <%= @user.name %>'s caramel points: <br>
-  <% @user.caramel_points.times do %>
-    <div class='candy'>🍭</div>
-  <% end %>
-<% end %>
+  <section class="caramels-display">
+    <% if @user.caramel_points > 0 %>
+      <%= @user.name %>'s caramel points: <br>
+      <% @user.caramel_points.times do %>
+        <div class="candy">🍭</div>
+      <% end %>
+    <% end %>
+  </section>
+</body>
