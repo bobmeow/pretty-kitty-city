@@ -1,0 +1,33 @@
+.user {
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "user-profile"
+  "user-pet-friends"
+  "nav"
+  "caramels-display";
+}
+
+@media screen and (min-width: 640px) {
+  .user {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+    "user-profile nav"
+    "user-pet-friends user-pet-friends"
+    "caramels-display caramels-display";
+  }
+}
+
+.user-profile {
+  grid-area: user-profile;
+}
+.user-pet-friends {
+  grid-area: user-pet-friends;
+}
+.nav {
+  grid-area: nav;
+}
+.caramels-display {
+  grid-area: caramels-display;
+}

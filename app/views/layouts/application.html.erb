@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pretty Kitty City</title>
     <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/css?family=Hind:700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
   <body>
-    <% if current_user && request.env['PATH_INFO'] != '/' %>
-      <div class="nav">
-        <ul>
-        <li><%= link_to "homepage", user_path(current_user) %></li>
-        <li><%= link_to "all pets", pets_path %></li>
-        </ul>
-      </div>
+    <% if current_user && request.env['PATH_INFO'] != '/' && request.env['PATH_INFO'] != '/pets/new' %>
+      <%= render "layouts/nav" %>
     <% end %>
-
     <%= yield %>
   </body>
 </html>

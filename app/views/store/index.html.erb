@@ -1,15 +1,19 @@
-<h1>Welcome to Pretty Kitty Shoppy</h1>
-
-Hi, <%= @user.name %>, you have <%= "#{@user.caramel_points} 🍭" %> and you can buy some cool things for your cat.<br><br>
-
-<%= flash[:notice] %>
-<table>
-  <% @items.each do |i| %>
-    <tr>
-    <td><%= i.emoji %></td>
-    <td><%= form_tag("/store/#{i.id}", method: :post) do %>
-      <%= submit_tag "#{i.price} 🍭", data: { confirm: "Buy #{i.emoji} for #{i.price} caramel?" } %>
-    <% end %></td>
-    </tr>
-  <% end %>
-</table>
+<body class="store">
+  <header class="store-header">
+    <h1>Welcome to Pretty Kitty Shoppy</h1>
+    Hi, <%= @user.name %>, you have <%= "#{@user.caramel_points} 🍭" %> and you can buy some cool things for your cat.<br><br>
+    <%= flash[:notice] %>
+  </header>
+  <main class="treatz">
+    <ul class="treatz-list">
+      <% @items.each do |i| %>
+        <li>
+          <%= i.emoji %>
+          <%= form_tag("/store/#{i.id}", method: :post) do %>
+          <%= submit_tag "#{i.price} 🍭", data: { confirm: "Buy #{i.emoji} for #{i.price} caramel?" } %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </main>
+</body>

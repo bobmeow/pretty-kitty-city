@@ -1,0 +1,25 @@
+.pets-index {
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "pets-list"
+  "pets-visit"
+  "nav";
+}
+
+@media screen and (min-width: 640px) {
+  .pets-index {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+    "pets-list nav"
+    "pets-visit pets-visit";
+  }
+}
+
+.pets-list {
+  grid-area: pets-list;
+}
+.pets-visit {
+  grid-area: pets-visit;
+}

@@ -1,27 +1,27 @@
-<h1><%= @user.name%>'s Profile</h1>
+<body class="user">
+  <section class="user-profile">
+    <h1><%= @user.name%>'s Profile</h1>
 
-<p>username: <%= @user.username %></p>
+    <p>username: <%= @user.username %></p>
 
-<p>my pet: <%= link_to "#{@user.pet.name}", pet_path(@user.pet) %></p>
+    <p>my pet: <%= link_to "#{@user.pet.name}", pet_path(@user.pet) %></p>
+  </section>
 
+  <section class="user-pet-friends">
+    <h2>my pet friends</h2>
+    <ul>
+    <% @user.pet_friends.each do |pet_friend| %>
+    <li><%= link_to "#{pet_friend.name}", pet_path(pet_friend) %></li>
+    <% end %>
+    </ul>
+  </section>
 
-<h2>my pet friends</h2>
-<ul>
-<% @user.pet_friends.each do |pet_friend| %>
-<li><%= link_to "#{pet_friend.name}", pet_path(pet_friend) %></li>
-<% end %>
-</ul>
-
-<% if current_user %>
-  <%= link_to "Logout", logout_path, :method => 'post' %>
-<%end%><br>
-<!--- move this logout button to the nav bar or someplace else -->
-
-
-
-<% if @user.caramel_points > 0 %>
-  <%= @user.name %>'s caramel points: <br>
-  <% @user.caramel_points.times do %>
-    <div class='candy'>🍭</div>
-  <% end %>
-<% end %>
+  <section class="caramels-display">
+    <% if @user.caramel_points > 0 %>
+      <%= @user.name %>'s caramel points: <br>
+      <% @user.caramel_points.times do %>
+        <div class='candy'>🍭</div>
+      <% end %>
+    <% end %>
+  </section>
+</body>

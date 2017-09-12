@@ -1,0 +1,25 @@
+.nav {
+  float: right;
+  background-color: $nav-bg-color;
+  height: 200px;
+  width: 100%;
+
+  ul {
+    padding: 20px;
+  }
+
+  li {
+    list-style: none;
+    list-style-position:inside;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .nav {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    width: 200px;
+    justify-self: center;
+  }
+}

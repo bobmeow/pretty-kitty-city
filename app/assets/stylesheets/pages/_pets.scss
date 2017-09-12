@@ -1,0 +1,42 @@
+#catmogi {
+  font-size: 76pt;
+}
+
+.pet {
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "pet-profile"
+  "owner-interactions"
+  "pet-human-friends"
+  "nav"
+  "caramels-display";
+}
+
+@media screen and (min-width: 640px) {
+  .pet {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+    "pet-profile nav"
+    "owner-interactions owner-interactions"
+    "pet-human-friends pet-human-friends"
+    "caramels-display caramels-display";
+  }
+}
+
+.pet-profile {
+  grid-area: pet-profile;
+}
+.pet-human-friends {
+  grid-area: pet-human-friends;
+}
+.owner-interactions {
+  grid-area: owner-interactions;
+}
+.nav {
+  grid-area: nav;
+}
+.caramels-display {
+  grid-area: caramels-display;
+}
