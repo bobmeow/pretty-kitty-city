@@ -1,0 +1,288 @@
+/*
+
+
+ */
+@import url("https://fonts.googleapis.com/css?family=Hind:700");
+/* line 3, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/base/_typography.scss */
+body {
+  font-family: "Hind", "Helvetica Neue", sans-serif;
+  font-size: 1.4em;
+  color: #ff69b4;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/base/_globals.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 5, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/base/_globals.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* line 9, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/base/_globals.scss */
+a {
+  text-decoration: none;
+  color: #b4ff69;
+}
+
+/* line 14, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/base/_globals.scss */
+ol {
+  list-style: none;
+}
+
+/* line 18, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/base/_globals.scss */
+ul {
+  list-style: none;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/layout/_layout.scss */
+body {
+  background-color: #fff4f4;
+  margin: 50px auto;
+  width: 85vw;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/layout/_nav.scss */
+.nav {
+  float: right;
+  background-color: #ffb469;
+  height: 200px;
+  width: 100%;
+}
+/* line 7, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/layout/_nav.scss */
+.nav ul {
+  padding: 20px;
+}
+/* line 11, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/layout/_nav.scss */
+.nav li {
+  list-style: none;
+  list-style-position: inside;
+}
+
+@media screen and (min-width: 640px) {
+  /* line 18, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/layout/_nav.scss */
+  .nav {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    width: 200px;
+    justify-self: center;
+  }
+}
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/modules/_caramel.scss */
+.candy {
+  font-size: 7vw;
+  float: left;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 4000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 4000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 4000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_static.scss */
+.welcome {
+  background-image: url(/assets/background-540bd2e5e8119e35b63e2d70528d77fb617c907755662d82da71cb09c04261d0.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Hind", "Helvetica Neue", sans-serif;
+  font-size: 7vw;
+  color: #ff69b4;
+  text-align: center;
+  margin: 300px auto;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+/* line 15, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_static.scss */
+.welcome a {
+  text-decoration: none;
+  color: #b4ff69;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_signup.scss */
+.signup {
+  margin: 100px auto;
+  width: 40vw;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_login.scss */
+.login {
+  margin: 100px auto;
+  width: 40vw;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_users.scss */
+.user {
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 1fr;
+  grid-template-areas: "user-profile" "user-pet-friends" "nav" "caramels-display";
+}
+
+@media screen and (min-width: 640px) {
+  /* line 13, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_users.scss */
+  .user {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "user-profile nav" "user-pet-friends user-pet-friends" "caramels-display caramels-display";
+  }
+}
+/* line 22, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_users.scss */
+.user-profile {
+  grid-area: user-profile;
+}
+
+/* line 25, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_users.scss */
+.user-pet-friends {
+  grid-area: user-pet-friends;
+}
+
+/* line 28, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_users.scss */
+.nav {
+  grid-area: nav;
+}
+
+/* line 31, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_users.scss */
+.caramels-display {
+  grid-area: caramels-display;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+#catmogi {
+  font-size: 76pt;
+}
+
+/* line 5, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+.pet {
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 1fr;
+  grid-template-areas: "pet-profile" "owner-interactions" "pet-human-friends" "nav" "caramels-display";
+}
+
+@media screen and (min-width: 640px) {
+  /* line 18, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+  .pet {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "pet-profile nav" "owner-interactions owner-interactions" "pet-human-friends pet-human-friends" "caramels-display caramels-display";
+  }
+}
+/* line 28, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+.pet-profile {
+  grid-area: pet-profile;
+}
+
+/* line 31, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+.pet-human-friends {
+  grid-area: pet-human-friends;
+}
+
+/* line 34, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+.owner-interactions {
+  grid-area: owner-interactions;
+}
+
+/* line 37, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+.nav {
+  grid-area: nav;
+}
+
+/* line 40, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets.scss */
+.caramels-display {
+  grid-area: caramels-display;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets-index.scss */
+.pets-index {
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 1fr;
+  grid-template-areas: "pets-list" "pets-visit" "nav";
+}
+
+@media screen and (min-width: 640px) {
+  /* line 12, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets-index.scss */
+  .pets-index {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "pets-list nav" "pets-visit pets-visit";
+  }
+}
+/* line 20, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets-index.scss */
+.pets-list {
+  grid-area: pets-list;
+}
+
+/* line 23, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_pets-index.scss */
+.pets-visit {
+  grid-area: pets-visit;
+}
+
+/* line 1, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_store.scss */
+.store {
+  display: grid;
+  grid-column-gap: 3%;
+  grid-row-gap: 1vw;
+  grid-template-columns: 1fr;
+  grid-template-areas: "store-header" "treatz" "nav";
+}
+
+/* line 13, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_store.scss */
+.treatz ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 2ch;
+  font-size: 3ch;
+}
+
+@media screen and (min-width: 640px) {
+  /* line 22, /Users/jing/Computer-Club/teamwork/pretty-kitty-city/app/assets/stylesheets/pages/_store.scss */
+  .store {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "store-header nav" "treatz treatz";
+  }
+}
